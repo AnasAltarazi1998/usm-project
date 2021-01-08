@@ -18,13 +18,6 @@ public class UserRepository {
             InputStream in = apiClass.get(base_user_url + "/signin"+"/" + email + "/" + password);
             System.out.println(base_user_url + "/" + email + "/" + password);
             String result = BaseRepository.convertInputStreamToString(in);
-            // InputStreamReader isr = new InputStreamReader(in);
-            // int c = -1;
-            // String result = "";
-            // while ((c = isr.read()) != -1) {
-            //     result = result+(char)c;
-            // }
-            System.out.println(result);
             Gson g = new Gson();
             UserModel u = g.fromJson(result, UserModel.class);
             return u;
