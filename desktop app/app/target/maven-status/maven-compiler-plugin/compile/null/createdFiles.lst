@@ -1,0 +1,12 @@
+Models\PostModel.class
+signin.class
+HelloFX.class
+Models\ScholarshipModel.class
+view\pages\LogInPage.class
+Models\UserModel.class
+view\components\LoginForm.class
+Models\CommentModel.class
+Models\CommunityModel.class
+Models\BoardModel.class
+view\components\BaseForm.class
+Models\ProfsModel.class

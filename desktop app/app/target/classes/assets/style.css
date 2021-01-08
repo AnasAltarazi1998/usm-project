@@ -1,0 +1,18 @@
+.text-field {
+    -fx-background-color: transparent, transparent ;
+    -fx-color: white;
+   }
+.text-field:focused {
+   
+}
+#baseformbutton{
+    
+    -fx-background-color: #B39DDB; 
+    -fx-background-radius: 15px; 
+    -fx-text-fill: #ffffff;
+    
+}
+#baseformrec{
+    -fx-background-color: grey;
+    -fx-opacity: 0.6;
+}
