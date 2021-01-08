@@ -1,0 +1,29 @@
+/* BaseForm */
+#baseformrec{
+    -fx-background-color: grey;
+    -fx-opacity: 0.6;
+}
+
+/* LoginForm */
+
+.text-field {
+   
+    -fx-font-size: 18;
+    -fx-padding: 1,1,1,1;
+    -fx-border-color:#B39DDB;
+    -fx-border-width: 0 0 1 0; 
+    -fx-background-color: transparent;
+    -fx-text-fill: #B39DDB;
+  
+   }
+.text-field:focused{
+ -fx-border-color:#ffffff;   
+}
+
+#baseformbutton{
+    
+    -fx-background-color: #b49edb; 
+    -fx-background-radius: 15px; 
+    -fx-text-fill: #ffffff;
+    
+}

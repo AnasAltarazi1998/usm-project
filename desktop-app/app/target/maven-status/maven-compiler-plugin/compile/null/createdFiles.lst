@@ -1,0 +1,16 @@
+app\Models\CommunityModel.class
+app\view\pages\signin.class
+app\view\pages\LogInPage.class
+app\view\pages\Profile.class
+app\view\components\LoginForm.class
+app\Models\PostModel.class
+app\Models\UserModel.class
+app\Models\CommentModel.class
+app\Models\ProfsModel.class
+app\route\Route.class
+app\Models\BoardModel.class
+app\Models\ScholarshipModel.class
+app\view\components\LogupForm.class
+app\view\components\BaseForm.class
+app\HelloFX.class
+app\view\pages\LogupPage.class
