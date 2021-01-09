@@ -39,7 +39,7 @@ public class FormService {
         response.setPassword(u.getPassword());
         response.setCommunity_name(u.getCommuninty().getName());
         response.setStart_year(u.getStart_year());
-        response.setSpecilauis(u.getSpec());
+        response.setSpec(u.getSpec());
         response.setStudy_year(u.getStudy_year());
         response.setUniversity(u.getUniversity());
         return response;
@@ -159,7 +159,7 @@ public class FormService {
         respons.setEmail(u.getEmail());
         respons.setPassword(u.getPassword());
         respons.setUniversity(u.getUniversity());
-        respons.setSpec(u.getSpecilauis());
+        respons.setSpec(u.getSpec());
         respons.setStart_year(u.getStart_year());
         respons.setStudy_year(u.getStudy_year());
         respons.setAge(u.getAge());
