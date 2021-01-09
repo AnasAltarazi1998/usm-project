@@ -2,6 +2,7 @@ package app.view.components;
 
 import java.util.Objects;
 
+import app.Controllers.UserController;
 import app.Models.UserModel;
 import app.route.Route;
 import app.view.pages.Profile;
@@ -17,8 +18,11 @@ public class LoginForm extends VBox{
     TextField email;
     PasswordField password;
     Button submit;
+   
+    UserController userController = UserController.getInstance();
     
     public LoginForm() {
+        
         email = new TextField();
         email.setPromptText("email");
         password = new PasswordField();
@@ -46,11 +50,24 @@ public class LoginForm extends VBox{
         VBox.setVgrow(password, Priority.ALWAYS);
         VBox.setVgrow(submit, Priority.ALWAYS);
         submit.setOnAction(e->{
-            profileRoute();
+
+            boolean state = userController.checkSignIn(email.getText(), password.getText());
+            
+            if(state)
+                profileRoute(userController.getUserModel());
+            else
+            {
+                loginError();
+            }
+
         });
     }
-    public void profileRoute(){
-        Route.getStage().setScene((new Profile(new UserModel()).getScene()));
+    public void profileRoute(UserModel u){
+        Route.getStage().setScene((new Profile(u).getScene()));
+    }
+    public void loginError()
+    {
+        Route.showError(userController.getUserModel().getName());
     }
     public LoginForm(TextField email, PasswordField password, Button submit) {
         this.email = email;

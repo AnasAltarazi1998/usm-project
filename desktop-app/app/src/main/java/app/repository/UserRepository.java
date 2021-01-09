@@ -16,7 +16,6 @@ public class UserRepository {
     public UserModel signIn(String email, String password) {
         try {
             InputStream in = apiClass.get(base_user_url + "/signin"+"/" + email + "/" + password);
-            System.out.println(base_user_url + "/" + email + "/" + password);
             String result = BaseRepository.convertInputStreamToString(in);
             Gson g = new Gson();
             UserModel u = g.fromJson(result, UserModel.class);

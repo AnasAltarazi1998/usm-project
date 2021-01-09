@@ -95,6 +95,7 @@ public class LogupForm extends VBox {
     
         getChildren().addAll(username,password,email,university,specialization,birthdate,datePicker1,registrationYear,datePicker2,checkBox,submit);
         setAlignment(Pos.CENTER);
+        
     }
 
     public LogupForm(TextField username, TextField email, TextField specialization, TextField university, PasswordField password, Label birthdate, DatePicker datePicker1, Label registrationYear, DatePicker datePicker2, CheckBox checkBox, Button submit) {
