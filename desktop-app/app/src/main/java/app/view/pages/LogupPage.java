@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import app.styles.StyleValues;
 import app.view.components.BaseForm;
 import app.view.components.LogupForm;
 
@@ -34,9 +35,7 @@ public class LogupPage {
             baseForm.getRec().setHeight(scene.heightProperty().get()*0.638);
         });
 
-        File f = new File("./src/assets/style.css");
-        scene.getStylesheets().clear();
-        scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
+        scene.getStylesheets().add(StyleValues.css_uri);
        
     }
 
