@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:usm_mobile/Controllers/BoardController.dart';
+import 'package:usm_mobile/Models/BoardModel.dart';
+import 'package:usm_mobile/Repositories/BoardRepo.dart';
 
 class SearchField extends StatelessWidget {
-  const SearchField({Key key}) : super(key: key);
-
+  BoardController boardController =
+      Get.put(BoardController(), tag: 'boardController');
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,6 +36,10 @@ class SearchField extends StatelessWidget {
             Container(
               child: Flexible(
                 child: TextField(
+                  onSubmitted: (value) {
+                    print('click');
+                    boardController.searchControl(value);
+                  },
                   decoration: InputDecoration(
                     //prefixIcon: Icon(Icons.search),
                     hintText: 'What you looking for?',
