@@ -2,6 +2,7 @@ package com.company.app.services;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import com.company.app.Models.BoardModel;
@@ -39,7 +40,6 @@ public class FormService {
         response.setPassword(u.getPassword());
         response.setCommunity_name(u.getCommuninty().getName());
         response.setStart_year(u.getStart_year());
-        response.setSpec(u.getSpec());
         response.setStudy_year(u.getStudy_year());
         response.setUniversity(u.getUniversity());
         return response;
@@ -85,6 +85,14 @@ public class FormService {
         }
         return response;
     }
+    public Iterator<BoardModel> convertToIteraatorOfBoardResponseForm(Iterator<BoardEntity> list) {
+        List<BoardModel> response = new ArrayList<>();
+        while(list.hasNext())
+        {
+            response.add(convertToBoardResponseForm(list.next()));
+        }
+        return response.iterator();
+    }
 
     public List<UserModel> convertToListOfUserResponseForm(List<UserEntity> list) {
         List<UserModel> response = new ArrayList<>();
@@ -125,7 +133,7 @@ public class FormService {
     public List<CommentModel> convertToListOfCommentModelFromCommentEntitiesForm(List<CommentEntity> commentEntities) {
         List<CommentModel> comments = new ArrayList<>();
         for (CommentEntity commentEntity : commentEntities) {
-            CommentModel currentComment = new CommentModel(commentEntity.getUEntity().getName(),
+            CommentModel currentComment = new CommentModel(convertToUserResponseForm(commentEntity.getUEntity()),
                     commentEntity.getValue());
             comments.add(currentComment);
 
@@ -143,8 +151,6 @@ public class FormService {
             model.setUserWhoMakeLike(convertToListOfUsersModelsFromLikeEntitiesForm(postEntity.getLikes()));
             model.setValue(postEntity.getValue());
             model.setAttach(postEntity.getAttach());
-            model.setLikeCount(postEntity.getLikes().size());
-            model.setCommentCount(postEntity.getComments().size());
             model.setCommentsInfo(convertToListOfCommentModelFromCommentEntitiesForm(postEntity.getComments()));
             model.setCreated_at(postEntity.getCreated_at());
             postModels.add(model);
@@ -159,7 +165,6 @@ public class FormService {
         respons.setEmail(u.getEmail());
         respons.setPassword(u.getPassword());
         respons.setUniversity(u.getUniversity());
-        respons.setSpec(u.getSpec());
         respons.setStart_year(u.getStart_year());
         respons.setStudy_year(u.getStudy_year());
         respons.setAge(u.getAge());
@@ -169,7 +174,7 @@ public class FormService {
         respons.setLikes(new ArrayList<>());
         respons.setPosts(new ArrayList<>());
         respons.setComments(new ArrayList<>());
-        respons.setflag(true);
+        respons.setFlag(true);
         respons.setCreated_at(new Date());
 
         return respons;
