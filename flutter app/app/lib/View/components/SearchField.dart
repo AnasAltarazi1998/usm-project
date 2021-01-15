@@ -5,8 +5,6 @@ import 'package:usm_mobile/Models/BoardModel.dart';
 import 'package:usm_mobile/Repositories/BoardRepo.dart';
 
 class SearchField extends StatelessWidget {
-  BoardController boardController =
-      Get.put(BoardController(), tag: 'boardController');
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,21 +33,25 @@ class SearchField extends StatelessWidget {
             ),
             Container(
               child: Flexible(
-                child: TextField(
-                  onSubmitted: (value) {
-                    print('click');
-                    boardController.searchControl(value);
-                  },
-                  decoration: InputDecoration(
-                    //prefixIcon: Icon(Icons.search),
-                    hintText: 'What you looking for?',
-                    hintStyle: TextStyle(
-                      //color: Colors.white,
-                      fontFamily: "Roboto",
-                      //fontSize: 15,
-                      //fontWeight: FontWeight.bold,
+                child: GetBuilder<BoardController>(
+                  // specify type as Controller
+                  init: BoardController(), // intialize with the Controller
+                  builder: (val) => TextField(
+                    onSubmitted: (value) {
+                      print('click');
+                      val.searchControl(value);
+                    },
+                    decoration: InputDecoration(
+                      //prefixIcon: Icon(Icons.search),
+                      hintText: 'What you looking for?',
+                      hintStyle: TextStyle(
+                        //color: Colors.white,
+                        fontFamily: "Roboto",
+                        //fontSize: 15,
+                        //fontWeight: FontWeight.bold,
+                      ),
+                      border: InputBorder.none,
                     ),
-                    border: InputBorder.none,
                   ),
                 ),
               ),
