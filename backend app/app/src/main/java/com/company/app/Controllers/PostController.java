@@ -12,6 +12,9 @@ import com.company.app.services.FormService;
 import com.company.app.services.PostServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,7 +45,12 @@ public class PostController {
 
         } else
             return false;
+    }
 
+    @GetMapping(path = "/getpostbyid/{p_id}")
+    public PostModel getPostById(@PathVariable(name = "p_id") long id) {
+        PostEntity post = postRepo.findById(id).get();
+        return formService.convertToPostResponseFromPostEntitiesForm(post);
     }
 
     @GetMapping(path = "/search/{val}")
@@ -55,6 +63,35 @@ public class PostController {
 
         List<PostEntity> postlist = postRepo.getPostByDate().get();
         return formService.convertToListOfPostResponseFromPostEntitiesForm(postlist);
+    }
+
+    @GetMapping(path = "/getallposts")
+    public Page<PostModel> getAllPosts() {
+        Pageable pageable = new Pageable();
+        List<PostEntity> allPost = postRepo.findAll();
+        List<PostModel> allPostModels = formService.convertToListOfPostResponseFromPostEntitiesForm(allPost);
+        Page<PostModel> allPostsPage = new PageImpl<>(allPostModels);
+        return allPostsPage;
+
+    }
+
+    @PostMapping(value = "/editpost")
+    public PostModel editPost(@RequestBody PostModel newPost) {
+
+        if (postRepo.existsById(Long.valueOf(newPost.getId()))) {
+            PostEntity post = postRepo.findById(Long.valueOf(newPost.getId())).get();
+            post.setTitle(newPost.getTitle());
+            post.setValue(newPost.getValue());
+            post.setAttach(newPost.getValue());
+            postRepo.save(post);
+            PostModel postModel = formService.convertToPostResponseFromPostEntitiesForm(post);
+            return postModel;
+        } else {
+            PostEntity post = new PostEntity();
+            post.setTitle("404 - post Not Found");
+            PostModel postModel = formService.convertToPostResponseFromPostEntitiesForm(post);
+            return postModel;
+        }
     }
 
 }
