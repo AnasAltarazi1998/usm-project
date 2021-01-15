@@ -85,10 +85,10 @@ public class FormService {
         }
         return response;
     }
+
     public Iterator<BoardModel> convertToIteraatorOfBoardResponseForm(Iterator<BoardEntity> list) {
         List<BoardModel> response = new ArrayList<>();
-        while(list.hasNext())
-        {
+        while (list.hasNext()) {
             response.add(convertToBoardResponseForm(list.next()));
         }
         return response.iterator();
@@ -156,6 +156,21 @@ public class FormService {
             postModels.add(model);
         }
         return postModels;
+    }
+
+    public PostModel convertToPostResponseFromPostEntitiesForm(PostEntity postEntity) {
+
+        PostModel postModel = new PostModel();
+        postModel.setId(Math.toIntExact(postEntity.getId()));
+        postModel.setTitle(postEntity.getTitle());
+        postModel.setUserImage(postEntity.getUEntity().getImg());
+        postModel.setUserWhoMakeLike(convertToListOfUsersModelsFromLikeEntitiesForm(postEntity.getLikes()));
+        postModel.setValue(postEntity.getValue());
+        postModel.setAttach(postEntity.getAttach());
+        postModel.setCommentsInfo(convertToListOfCommentModelFromCommentEntitiesForm(postEntity.getComments()));
+        postModel.setCreated_at(postEntity.getCreated_at());
+
+        return postModel;
     }
 
     public UserEntity convertToUserEntityFromUserModelForm(UserModel u) {
