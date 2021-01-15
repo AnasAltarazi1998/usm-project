@@ -13,38 +13,35 @@ class CommunityPostsBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: Get.width * 0.2),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            PostCardsListView(
-              mainList: this.firstList,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          PostCardsListView(
+            mainList: this.firstList,
+          ),
+          Container(
+            padding: EdgeInsets.only(
+                top: 30,
+                bottom: 10,
+                left: Get.height * 0.1,
+                right: Get.height * 0.1),
+            child: Divider(
+              color: Color(0xAAB39DD8),
+              thickness: 5,
             ),
-            Container(
-              padding: EdgeInsets.only(
-                  top: 30,
-                  bottom: 10,
-                  left: Get.height * 0.1,
-                  right: Get.height * 0.1),
-              child: Divider(
-                color: Color(0xAAB39DD8),
-                thickness: 5,
+          ),
+          Container(
+            padding: EdgeInsets.only(bottom: 30),
+            child: Text(
+              'COMMUNITY POSTS',
+              style: TextStyle(
+                fontSize: 22,
+                color: Color(0xAA616161),
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(bottom: 30),
-              child: Text(
-                'COMMUNITY POSTS',
-                style: TextStyle(
-                  fontSize: 22,
-                  color: Color(0xAA616161),
-                ),
-              ),
-            ),
-            PostCardsListView(mainList: this.firstList),
-          ],
-        ),
+          ),
+          PostCardsListView(mainList: this.firstList),
+        ],
       ),
     );
   }

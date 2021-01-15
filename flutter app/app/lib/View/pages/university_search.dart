@@ -22,7 +22,7 @@ class _University_SearchState extends State<University_Search> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            new Side_bar(selected: 2),
+            Side_bar(selected: 2),
             Container(
               width: Get.width * 0.8,
               padding: EdgeInsets.only(top: 30),

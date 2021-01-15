@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../pages/Search_Page.dart';
+import '../pages/community_page.dart';
+import '../pages/university_search.dart';
+
 class Tiles extends StatefulWidget {
   final selected;
 
@@ -27,7 +31,10 @@ class _TilesState extends State<Tiles> {
               return IconButton(
                 iconSize: widget.selected == 1 ? size : 38,
                 color: Colors.white,
-                onPressed: () {},
+                onPressed: () {
+                  Get.off(Community_Page(),
+                      transition: Transition.noTransition);
+                },
                 icon: child,
               );
             },
@@ -44,7 +51,10 @@ class _TilesState extends State<Tiles> {
               return IconButton(
                 iconSize: widget.selected == 2 ? size : 38,
                 color: Colors.white,
-                onPressed: () {},
+                onPressed: () {
+                  Get.off(University_Search(),
+                      transition: Transition.noTransition);
+                },
                 icon: child,
               );
             },
@@ -78,7 +88,10 @@ class _TilesState extends State<Tiles> {
               return IconButton(
                 iconSize: widget.selected == 4 ? size : 38,
                 color: Colors.white,
-                onPressed: () {},
+                onPressed: () {
+                  Get.off(Search_Page(),
+                      transition: Transition.noTransition);
+                },
                 icon: child,
               );
             },
