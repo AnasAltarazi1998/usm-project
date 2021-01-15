@@ -1,6 +1,7 @@
 package com.company.app.Controllers;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +29,12 @@ public class BoardController {
     FormService formService;
     @Autowired
     UserRepo UserRepo;
-
+    @GetMapping(path = "/all")
+    public Iterator<BoardModel> getAll(){
+        Iterable<BoardEntity> resp = boardRepo.findAll();
+        
+        return formService.convertToIteraatorOfBoardResponseForm(resp.iterator());
+    }
     @GetMapping(path = "/getbyname/{name}")
     public BoardModel getBoard(@PathVariable(name = "name") String name) {
         Optional<BoardEntity> b = boardRepo.findByName(name);
@@ -36,12 +42,12 @@ public class BoardController {
             return formService.convertToBoardResponseForm(b.get());
         else {
             BoardModel res = new BoardModel();
-            res.setName("board not found");
+            res.setName("404 - board not found");
             return res;
         }
     }
 
-    @GetMapping(path = "/boardbyuserid/{id}")
+    @GetMapping(path = "/boardsbyuserid/{id}")
     public List<BoardModel> getBoardsByUserId(@PathVariable(name = "id") String id) {
         if (UserRepo.findById(Long.parseLong(id)).isPresent()) {
             List<BoardEntity> board_list = UserRepo.getBoards(Long.parseLong(id));
@@ -50,13 +56,13 @@ public class BoardController {
             else {
                 List<BoardModel> res = new ArrayList<>();
                 res.add(new BoardModel());
-                res.get(0).setName("no boards for this user");
+                res.get(0).setName("404 - no boards for this user");
                 return res;
             }
         } else {
             List<BoardModel> res = new ArrayList<>();
             res.add(new BoardModel());
-            res.get(0).setName("no suer with this id");
+            res.get(0).setName("400 - no suer with this id");
             return res;
         }
 

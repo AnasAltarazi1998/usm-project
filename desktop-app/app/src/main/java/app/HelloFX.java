@@ -1,11 +1,9 @@
 package app;
 import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import app.route.Route;
 import app.view.pages.LogInPage;
-import app.view.pages.LogupPage;
 
 public class HelloFX extends Application {
     

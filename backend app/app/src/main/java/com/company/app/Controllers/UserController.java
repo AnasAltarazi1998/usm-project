@@ -68,6 +68,7 @@ public class UserController {
         UserEntity responseEntity = new UserEntity();
         if (userRepo.findByEmail(u.getEmail()).isPresent()) {
             u.setId(-1);
+            u.setName("user is already exist");
             return u;
         } else {
             responseEntity = service.convertToUserEntityFromUserModelForm(u);

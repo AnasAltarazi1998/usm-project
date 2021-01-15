@@ -4,23 +4,24 @@ import java.util.Objects;
 
 public class CommentModel {
 
-    String UserName;
+    UserModel user;
     String Value;
+
 
     public CommentModel() {
     }
 
-    public CommentModel(String UserName, String Value) {
-        this.UserName = UserName;
+    public CommentModel(UserModel user, String Value) {
+        this.user = user;
         this.Value = Value;
     }
 
-    public String getUserName() {
-        return this.UserName;
+    public UserModel getUser() {
+        return this.user;
     }
 
-    public void setUserName(String UserName) {
-        this.UserName = UserName;
+    public void setUser(UserModel user) {
+        this.user = user;
     }
 
     public String getValue() {
@@ -31,13 +32,13 @@ public class CommentModel {
         this.Value = Value;
     }
 
-    public CommentModel UserName(String UserName) {
-        this.UserName = UserName;
+    public CommentModel user(UserModel user) {
+        setUser(user);
         return this;
     }
 
     public CommentModel Value(String Value) {
-        this.Value = Value;
+        setValue(Value);
         return this;
     }
 
@@ -48,18 +49,21 @@ public class CommentModel {
         if (!(o instanceof CommentModel)) {
             return false;
         }
-        CommentModel CommentModel = (CommentModel) o;
-        return Objects.equals(UserName, CommentModel.UserName) && Objects.equals(Value, CommentModel.Value);
+        CommentModel commentModel = (CommentModel) o;
+        return Objects.equals(user, commentModel.user) && Objects.equals(Value, commentModel.Value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(UserName, Value);
+        return Objects.hash(user, Value);
     }
 
     @Override
     public String toString() {
-        return "{" + " UserName='" + getUserName() + "'" + ", Value='" + getValue() + "'" + "}";
+        return "{" +
+            " user='" + getUser() + "'" +
+            ", Value='" + getValue() + "'" +
+            "}";
     }
-
+  
 }

@@ -9,7 +9,6 @@ public class UserModel {
     private String name ;
     private String email ;
     private String password ;
-    private String specilauis ;
     private String university ;
     private String img ;
     private String community_name ;
@@ -21,12 +20,12 @@ public class UserModel {
     public UserModel() {
     }
 
-    public UserModel(int id, String name, String email, String password, String specilauis, String university, String img, String community_name, int study_year, Date start_year, Date age) {
+    public UserModel(int id, String name, String email, String password, String university, String img, String community_name, int study_year, Date start_year, Date age) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
-        this.specilauis = specilauis;
+       
         this.university = university;
         this.img = img;
         this.community_name = community_name;
@@ -65,14 +64,6 @@ public class UserModel {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getSpecilauis() {
-        return this.specilauis;
-    }
-
-    public void setSpecilauis(String specilauis) {
-        this.specilauis = specilauis;
     }
 
     public String getUniversity() {
@@ -143,11 +134,7 @@ public class UserModel {
         return this;
     }
 
-    public UserModel specilauis(String specilauis) {
-        this.specilauis = specilauis;
-        return this;
-    }
-
+    
     public UserModel university(String university) {
         this.university = university;
         return this;
@@ -178,37 +165,13 @@ public class UserModel {
         return this;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof UserModel)) {
-            return false;
-        }
-        UserModel UserModel = (UserModel) o;
-        return id == UserModel.id && Objects.equals(name, UserModel.name) && Objects.equals(email, UserModel.email) && Objects.equals(password, UserModel.password) && Objects.equals(specilauis, UserModel.specilauis) && Objects.equals(university, UserModel.university) && Objects.equals(img, UserModel.img) && Objects.equals(community_name, UserModel.community_name) && study_year == UserModel.study_year && Objects.equals(start_year, UserModel.start_year) && Objects.equals(age, UserModel.age);
-    }
+   
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, email, password, specilauis, university, img, community_name, study_year, start_year, age);
+        return Objects.hash(id, name, email, password, university, img, community_name, study_year, start_year, age);
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", name='" + getName() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", password='" + getPassword() + "'" +
-            ", specilauis='" + getSpecilauis() + "'" +
-            ", university='" + getUniversity() + "'" +
-            ", img='" + getImg() + "'" +
-            ", community_name='" + getCommunity_name() + "'" +
-            ", study_year='" + getStudy_year() + "'" +
-            ", start_year='" + getStart_year() + "'" +
-            ", age='" + getAge() + "'" +
-            "}";
-    }
+   
 
 }

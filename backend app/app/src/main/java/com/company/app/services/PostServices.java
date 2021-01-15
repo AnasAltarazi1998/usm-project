@@ -17,7 +17,6 @@ public class PostServices {
         Date date = new Date();
         List<PostModel> posts = service.convertToListOfPostResponseFromPostEntitiesForm(postsEntities);
         for (PostModel postModel : posts) {
-            postModel.setRate(postModel.getLikeCount() + postModel.getCommentCount());
             Date proccesDate = postModel.getCreated_at();
             long dist = date.getTime() - proccesDate.getTime();
             if (dist == 86400000)
