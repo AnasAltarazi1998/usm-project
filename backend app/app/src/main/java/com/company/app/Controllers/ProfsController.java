@@ -32,7 +32,7 @@ public class ProfsController {
     public ProfsModel addProfs(@RequestBody ProfsEntity p) {
         ProfsModel response = new ProfsModel();
         if (profsRepo.findByEmail(p.getEmail()).isPresent()) {
-            response.setName("-1");
+            response.setName("100 - prof is exist");
             return response;
         } else {
             p.setCreated_at(new Date());

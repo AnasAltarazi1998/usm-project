@@ -1,7 +1,9 @@
 package app.view.components;
 
+import java.io.FileNotFoundException;
 import java.util.Objects;
 
+import app.Controllers.UserController;
 import app.Models.UserModel;
 import app.route.Route;
 import app.view.pages.Profile;
@@ -10,26 +12,28 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
-public class LoginForm extends VBox{
+public class LoginForm extends VBox {
     TextField email;
     PasswordField password;
     Button submit;
-    
+
+    UserController userController = UserController.getInstance();
+
     public LoginForm() {
+
         email = new TextField();
         email.setPromptText("email");
         password = new PasswordField();
         password.setPromptText("password");
-        
+
         email.setId("baseforminput");
         password.setId("baseforminput");
         submit = new Button("Sign in");
         submit.setId("baseformbutton");
-      
+
         email.setMinWidth(25);
         password.setMinWidth(25);
         submit.setMinWidth(25);
@@ -38,20 +42,39 @@ public class LoginForm extends VBox{
         email.setMaxWidth(250);
         password.setMaxWidth(250);
 
-        getChildren().addAll(email,password,submit);
+        getChildren().addAll(email, password, submit);
         setSpacing(10);
         submit.setPadding(new Insets(5, 5, 5, 5));
         setAlignment(Pos.CENTER);
-        
+
         VBox.setVgrow(email, Priority.ALWAYS);
         VBox.setVgrow(password, Priority.ALWAYS);
         VBox.setVgrow(submit, Priority.ALWAYS);
-        submit.setOnAction(e->{
-            profileRoute();
+        submit.setOnAction(e -> {
+
+            boolean state = userController.checkSignIn(email.getText(), password.getText());
+
+            if (state)
+                try {
+                    profileRoute(userController.getUserModel());
+                } catch (FileNotFoundException e1) {
+                 
+                    e1.printStackTrace();
+                }
+            else {
+                loginError();
+            }
+
         });
+        
     }
-    public void profileRoute(){
-        Route.getStage().setScene((new Profile(new UserModel()).getScene()));
+
+    public void profileRoute(UserModel u) throws FileNotFoundException {
+        Route.getStage().setScene((new Profile(u).getScene()));
+    }
+    public void loginError()
+    {
+        Route.showError(userController.getUserModel().getName());
     }
     public LoginForm(TextField email, PasswordField password, Button submit) {
         this.email = email;

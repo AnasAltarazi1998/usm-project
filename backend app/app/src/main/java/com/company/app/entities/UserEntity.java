@@ -39,7 +39,7 @@ public class UserEntity {
     private String password;
     private String university;
     @Column(name = "specialize")
-    private String spec;
+    private String community_name;
     private Integer study_year;
     @JsonFormat(pattern = "yyyy-mm")
     private Date start_year;
@@ -81,16 +81,13 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public UserEntity(Long id, String name, String email, String password, String university, String spec,
-            Integer study_year, Date start_year, Date age, boolean flag, Date created_at, String img,
-            CommunityEntity communinty, List<PostEntity> posts, List<LikeEntity> likes, List<BoardEntity> boards,
-            List<CommentEntity> comments) {
+    public UserEntity(Long id, String name, String email, String password, String university, String community_name, Integer study_year, Date start_year, Date age, boolean flag, Date created_at, String img, CommunityEntity communinty, List<PostEntity> posts, List<LikeEntity> likes, List<BoardEntity> boards, List<CommentEntity> comments) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.university = university;
-        this.spec = spec;
+        this.community_name = community_name;
         this.study_year = study_year;
         this.start_year = start_year;
         this.age = age;
@@ -144,12 +141,12 @@ public class UserEntity {
         this.university = university;
     }
 
-    public String getSpec() {
-        return this.spec;
+    public String getCommunity_name() {
+        return this.community_name;
     }
 
-    public void setSpec(String spec) {
-        this.spec = spec;
+    public void setCommunity_name(String community_name) {
+        this.community_name = community_name;
     }
 
     public Integer getStudy_year() {
@@ -176,15 +173,15 @@ public class UserEntity {
         this.age = age;
     }
 
-    public boolean isflag() {
+    public boolean isFlag() {
         return this.flag;
     }
 
-    public boolean getflag() {
+    public boolean getFlag() {
         return this.flag;
     }
 
-    public void setflag(boolean flag) {
+    public void setFlag(boolean flag) {
         this.flag = flag;
     }
 
@@ -245,87 +242,87 @@ public class UserEntity {
     }
 
     public UserEntity id(Long id) {
-        this.id = id;
+        setId(id);
         return this;
     }
 
     public UserEntity name(String name) {
-        this.name = name;
+        setName(name);
         return this;
     }
 
     public UserEntity email(String email) {
-        this.email = email;
+        setEmail(email);
         return this;
     }
 
     public UserEntity password(String password) {
-        this.password = password;
+        setPassword(password);
         return this;
     }
 
     public UserEntity university(String university) {
-        this.university = university;
+        setUniversity(university);
         return this;
     }
 
-    public UserEntity spec(String spec) {
-        this.spec = spec;
+    public UserEntity community_name(String community_name) {
+        setCommunity_name(community_name);
         return this;
     }
 
     public UserEntity study_year(Integer study_year) {
-        this.study_year = study_year;
+        setStudy_year(study_year);
         return this;
     }
 
     public UserEntity start_year(Date start_year) {
-        this.start_year = start_year;
+        setStart_year(start_year);
         return this;
     }
 
     public UserEntity age(Date age) {
-        this.age = age;
+        setAge(age);
         return this;
     }
 
     public UserEntity flag(boolean flag) {
-        this.flag = flag;
+        setFlag(flag);
         return this;
     }
 
     public UserEntity created_at(Date created_at) {
-        this.created_at = created_at;
+        setCreated_at(created_at);
         return this;
     }
 
     public UserEntity img(String img) {
-        this.img = img;
+        setImg(img);
         return this;
     }
 
     public UserEntity communinty(CommunityEntity communinty) {
-        this.communinty = communinty;
+        setCommuninty(communinty);
         return this;
     }
 
     public UserEntity posts(List<PostEntity> posts) {
-        this.posts = posts;
+        setPosts(posts);
         return this;
     }
 
     public UserEntity likes(List<LikeEntity> likes) {
-        this.likes = likes;
+        setLikes(likes);
         return this;
     }
 
     public UserEntity boards(List<BoardEntity> boards) {
-        this.boards = boards;
+        setBoards(boards);
         return this;
     }
 
     public UserEntity comments(List<CommentEntity> comments) {
-        this.comments = comments;
+        setComments(comments);
         return this;
     }
 
@@ -337,32 +334,35 @@ public class UserEntity {
             return false;
         }
         UserEntity userEntity = (UserEntity) o;
-        return Objects.equals(id, userEntity.id) && Objects.equals(name, userEntity.name)
-                && Objects.equals(email, userEntity.email) && Objects.equals(password, userEntity.password)
-                && Objects.equals(university, userEntity.university) && Objects.equals(spec, userEntity.spec)
-                && Objects.equals(study_year, userEntity.study_year)
-                && Objects.equals(start_year, userEntity.start_year) && Objects.equals(age, userEntity.age)
-                && flag == userEntity.flag && Objects.equals(created_at, userEntity.created_at)
-                && Objects.equals(img, userEntity.img) && Objects.equals(communinty, userEntity.communinty)
-                && Objects.equals(posts, userEntity.posts) && Objects.equals(likes, userEntity.likes)
-                && Objects.equals(boards, userEntity.boards) && Objects.equals(comments, userEntity.comments);
+        return Objects.equals(id, userEntity.id) && Objects.equals(name, userEntity.name) && Objects.equals(email, userEntity.email) && Objects.equals(password, userEntity.password) && Objects.equals(university, userEntity.university) && Objects.equals(community_name, userEntity.community_name) && Objects.equals(study_year, userEntity.study_year) && Objects.equals(start_year, userEntity.start_year) && Objects.equals(age, userEntity.age) && flag == userEntity.flag && Objects.equals(created_at, userEntity.created_at) && Objects.equals(img, userEntity.img) && Objects.equals(communinty, userEntity.communinty) && Objects.equals(posts, userEntity.posts) && Objects.equals(likes, userEntity.likes) && Objects.equals(boards, userEntity.boards) && Objects.equals(comments, userEntity.comments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, email, password, university, spec, study_year, start_year, age, flag, created_at,
-                img, communinty, posts, likes, boards, comments);
+        return Objects.hash(id, name, email, password, university, community_name, study_year, start_year, age, flag, created_at, img, communinty, posts, likes, boards, comments);
     }
 
     @Override
     public String toString() {
-        return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", email='" + getEmail() + "'"
-                + ", password='" + getPassword() + "'" + ", university='" + getUniversity() + "'" + ", spec='"
-                + getSpec() + "'" + ", study_year='" + getStudy_year() + "'" + ", start_year='" + getStart_year() + "'"
-                + ", age='" + getAge() + "'" + ", flag='" + isflag() + "'" + ", created_at='" + getCreated_at() + "'"
-                + ", img='" + getImg() + "'" + ", communinty='" + getCommuninty() + "'" + ", posts='" + getPosts() + "'"
-                + ", likes='" + getLikes() + "'" + ", boards='" + getBoards() + "'" + ", comments='" + getComments()
-                + "'" + "}";
+        return "{" +
+            " id='" + getId() + "'" +
+            ", name='" + getName() + "'" +
+            ", email='" + getEmail() + "'" +
+            ", password='" + getPassword() + "'" +
+            ", university='" + getUniversity() + "'" +
+            ", community_name='" + getCommunity_name() + "'" +
+            ", study_year='" + getStudy_year() + "'" +
+            ", start_year='" + getStart_year() + "'" +
+            ", age='" + getAge() + "'" +
+            ", flag='" + isFlag() + "'" +
+            ", created_at='" + getCreated_at() + "'" +
+            ", img='" + getImg() + "'" +
+            ", communinty='" + getCommuninty() + "'" +
+            ", posts='" + getPosts() + "'" +
+            ", likes='" + getLikes() + "'" +
+            ", boards='" + getBoards() + "'" +
+            ", comments='" + getComments() + "'" +
+            "}";
     }
 
 }

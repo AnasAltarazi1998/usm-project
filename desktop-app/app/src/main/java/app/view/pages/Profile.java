@@ -1,30 +1,38 @@
 package app.view.pages;
 
+import java.io.FileNotFoundException;
 import java.util.Objects;
 
 import app.Models.UserModel;
+import app.styles.StyleValues;
+import app.view.components.NavBar;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 
 public class Profile {
     Scene scene;
     Label value;
-    StackPane primary;
+    // HBox primary_layout;
     UserModel userinfo;
-    public Profile(UserModel u) {
+    HBox primary_layout;
+    NavBar navBar;
+
+    public Profile(UserModel u) throws FileNotFoundException {
+        navBar = new NavBar();
         userinfo = u;
         value = new Label(u.toString());
-        primary = new StackPane(value);
+        primary_layout = new HBox(navBar,value);
         value.setFont(new Font("arial", 30));
-        scene = new Scene(primary,600,600);
+        scene = new Scene(primary_layout,600,600);
+        scene.getStylesheets().add(StyleValues.css_uri);
     }
 
-    public Profile(Scene scene, Label value, StackPane primary) {
+    public Profile(Scene scene, Label value, HBox primary_layout) {
         this.scene = scene;
         this.value = value;
-        this.primary = primary;
+        this.primary_layout = primary_layout;
     }
 
     public Scene getScene() {
@@ -43,12 +51,12 @@ public class Profile {
         this.value = value;
     }
 
-    public StackPane getPrimary() {
-        return this.primary;
+    public HBox getPrimary() {
+        return this.primary_layout;
     }
 
-    public void setPrimary(StackPane primary) {
-        this.primary = primary;
+    public void setPrimary(HBox primary_layout) {
+        this.primary_layout = primary_layout;
     }
 
     public Profile scene(Scene scene) {
@@ -61,8 +69,8 @@ public class Profile {
         return this;
     }
 
-    public Profile primary(StackPane primary) {
-        this.primary = primary;
+    public Profile primary_layout(HBox primary_layout) {
+        this.primary_layout = primary_layout;
         return this;
     }
 
@@ -74,12 +82,12 @@ public class Profile {
             return false;
         }
         Profile profile = (Profile) o;
-        return Objects.equals(scene, profile.scene) && Objects.equals(value, profile.value) && Objects.equals(primary, profile.primary);
+        return Objects.equals(scene, profile.scene) && Objects.equals(value, profile.value) && Objects.equals(primary_layout, profile.primary_layout);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(scene, value, primary);
+        return Objects.hash(scene, value, primary_layout);
     }
 
     @Override
@@ -87,7 +95,7 @@ public class Profile {
         return "{" +
             " scene='" + getScene() + "'" +
             ", value='" + getValue() + "'" +
-            ", primary='" + getPrimary() + "'" +
+            ", primary_layout='" + getPrimary() + "'" +
             "}";
     }
 
