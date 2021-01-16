@@ -56,7 +56,7 @@ public class BoardController {
         } else {
             List<BoardModel> res = new ArrayList<>();
             res.add(new BoardModel());
-            res.get(0).setName("no suer with this id");
+            res.get(0).setName("no user with this id");
             return res;
         }
 

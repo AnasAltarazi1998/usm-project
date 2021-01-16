@@ -129,4 +129,15 @@ public class UserController {
     // return false;
     // }
 
+    @PostMapping(path = "/delete/{email}")
+    public Boolean deleteUser(@PathVariable(name="email")String email)
+    {
+        if(!userRepo.findByEmail(email).isPresent())
+            return false ;
+        else{
+            UserEntity userEntity = userRepo.findByEmail(email).get();
+            userRepo.delete(userEntity);         
+            return true;
+        }
+    }
 }
