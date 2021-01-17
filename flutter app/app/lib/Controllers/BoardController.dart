@@ -10,7 +10,7 @@ class BoardController extends GetxController {
 
     @override
   void onInit() async {
-    search_result = await BoardRepo().search('a');
+    search_result = await BoardRepo().search('');
     super.onInit();
   }
 
