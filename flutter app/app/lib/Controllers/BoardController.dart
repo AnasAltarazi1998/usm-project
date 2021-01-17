@@ -6,22 +6,23 @@ import 'package:usm_mobile/Repositories/BoardRepo.dart';
 
 class BoardController extends GetxController {
   //BoardModel b = BoardModel(name: 'test');
-  List<dynamic> search_result = [];
+  List<dynamic> board_list = [];
 
-    @override
-  void onInit() async {
-    search_result = await BoardRepo().search('');
-    super.onInit();
-  }
-
-  // BoardController() {
-  //   search_result.add(b);
+  //   @override
+  // void onInit() async {
+  //   search_result = await BoardRepo().search('');
+  //   super.onInit();
   // }
+
+ 
   BoardRepo boardRepo = Get.put(BoardRepo(), tag: 'boardRepo');
 
-
-  searchControl(String value) async {
-    search_result = await boardRepo.search(value);
-    update();
+  getBoard(int id ) async {
+    board_list = await boardRepo.getUserBoards(id);
   }
+
+  // searchControl(String value) async {
+  //   search_result = await boardRepo.search(value);
+  //   update();
+  // }
 }
