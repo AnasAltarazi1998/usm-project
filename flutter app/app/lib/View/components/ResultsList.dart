@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usm_mobile/Controllers/BoardController.dart';
+import 'package:usm_mobile/Controllers/SearchController.dart';
 
 class ResultsList extends StatelessWidget {
   // BoardController boardController = Get.find(tag: 'boardController');
@@ -19,14 +20,15 @@ class ResultsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<BoardController>(
+    return GetBuilder<SearchController>(
       builder: (val) {
         int size = val.search_result.length;
         return ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.vertical,
+          padding: EdgeInsets.all(8.0),
           itemCount: size,
-          physics: NeverScrollableScrollPhysics(),
+          
           itemBuilder: (BuildContext context, size) {
             return 
             //Text('${val.search_result[size]['name']}');

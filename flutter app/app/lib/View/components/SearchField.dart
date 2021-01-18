@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:usm_mobile/Controllers/BoardController.dart';
+import 'package:usm_mobile/Controllers/SearchController.dart';
 import 'package:usm_mobile/Models/BoardModel.dart';
 import 'package:usm_mobile/Repositories/BoardRepo.dart';
 
@@ -33,9 +34,9 @@ class SearchField extends StatelessWidget {
             ),
             Container(
               child: Flexible(
-                child: GetBuilder<BoardController>(
+                child: GetBuilder<SearchController>(
                   // specify type as Controller
-                  init: BoardController(), // intialize with the Controller
+                  init: SearchController(), // intialize with the Controller
                   builder: (val) => TextField(
                     onSubmitted: (value) {
                       print('click');

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../pages/community_page.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   CustomAppBar({Key key})
@@ -24,10 +27,12 @@ class _CustomAppBarState extends State<CustomAppBar> {
             children: [
               IconButton(
                 icon: Icon(
-                  Icons.keyboard_backspace,
+                  Icons.home,
                   color: Color(0XAABCBCCB),
                 ),
-                onPressed: () => {},
+                onPressed: () => {
+                  Get.off(Community_Page() , transition: Transition.noTransition)
+                },
               )
             ],
           ),

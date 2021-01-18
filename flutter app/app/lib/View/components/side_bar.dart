@@ -71,15 +71,6 @@ class _Side_Bar_State extends State<Side_bar> {
             ],
           ),
         ),
-        // Container(
-        //   width: Get.width * 0.8,
-        //   child: Text(
-        //     " هون حطو \n القصص تبعكن و تركو width*0.8 ",
-        //     style: TextStyle(
-        //       fontSize: 48,
-        //     ),
-        //   ),
-        // ),
       ],
     );
   }

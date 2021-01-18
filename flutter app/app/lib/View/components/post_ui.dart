@@ -38,9 +38,6 @@ class Post_ui extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(),
-      body: CommunityPostsBuilder(firstList: firstList),
-    );
+    return  CommunityPostsBuilder(firstList: firstList);
   }
 }
