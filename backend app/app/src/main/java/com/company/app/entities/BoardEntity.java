@@ -27,7 +27,7 @@ public class BoardEntity {
     private String name;
     private String image;
     private String description;
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name = "users_in_board", joinColumns = { @JoinColumn(name = "board_id") }, inverseJoinColumns = {
             @JoinColumn(name = "user_id") })
     private List<UserEntity> users;

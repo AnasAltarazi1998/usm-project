@@ -3,12 +3,16 @@ package com.company.app.entities;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -54,16 +58,18 @@ public class UserEntity {
     @JoinColumn(name = "com_id", nullable = true)
     private CommunityEntity communinty;
 
-    @OneToMany(mappedBy = "uEntity")
+    @OneToMany(mappedBy = "uEntity" ,cascade = CascadeType.ALL , orphanRemoval = true)
     List<PostEntity> posts;
 
-    @OneToMany(mappedBy = "uEntity")
+    @OneToMany(mappedBy = "uEntity" , cascade = CascadeType.ALL , orphanRemoval = true)
     List<LikeEntity> likes;
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(name = "users_in_board", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+        @JoinColumn(name = "board_id") })
     List<BoardEntity> boards;
 
-    @OneToMany(mappedBy = "uEntity")
+    @OneToMany(mappedBy = "uEntity"  , cascade = CascadeType.ALL ,orphanRemoval = true)
     List<CommentEntity> comments;
 
     // @OneToOne(mappedBy = "admin")

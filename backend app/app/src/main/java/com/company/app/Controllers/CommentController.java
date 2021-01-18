@@ -52,6 +52,8 @@ public class CommentController {
 
         if (userEntity.getComments().contains(commentRepo.findById(c_id).get())) {
             commentRepo.delete(commentEntity);
+            userEntity.getComments().remove(commentEntity);
+            userRepo.save(userEntity);
             return true;
         } else
             return false;

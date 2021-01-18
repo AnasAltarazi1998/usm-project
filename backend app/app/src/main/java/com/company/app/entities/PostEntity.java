@@ -3,6 +3,8 @@ package com.company.app.entities;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,9 +34,9 @@ public class PostEntity {
     private String title;
     private String value;
     private String attach;
-    @OneToMany(mappedBy = "pEntity")
+    @OneToMany(mappedBy = "pEntity" , cascade = CascadeType.ALL)
     private List<LikeEntity> likes;
-    @OneToMany(mappedBy = "pEntity")
+    @OneToMany(mappedBy = "pEntity" , cascade = CascadeType.ALL)
     private List<CommentEntity> comments;
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date created_at;
