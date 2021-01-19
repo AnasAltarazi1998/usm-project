@@ -1,3 +1,4 @@
+app\view\components\LeftProfile.class
 app\Models\CommunityModel.class
 app\styles\StyleValues.class
 app\view\pages\signin.class
@@ -18,6 +19,7 @@ app\view\components\LoginForm.class
 app\Models\CommentModel.class
 app\Models\ProfsModel.class
 app\route\Route.class
+app\view\components\RightProfile.class
 app\Models\ScholarshipModel.class
 app\view\components\NavBar.class
 app\view\components\BaseForm.class

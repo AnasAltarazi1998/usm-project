@@ -5,7 +5,9 @@ import java.util.Objects;
 
 import app.Models.UserModel;
 import app.styles.StyleValues;
+import app.view.components.LeftProfile;
 import app.view.components.NavBar;
+import app.view.components.RightProfile;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -14,17 +16,18 @@ import javafx.scene.text.Font;
 public class Profile {
     Scene scene;
     Label value;
-    // HBox primary_layout;
+    LeftProfile leftProfile;
+    RightProfile rightProfile;
     UserModel userinfo;
     HBox primary_layout;
     NavBar navBar;
 
     public Profile(UserModel u) throws FileNotFoundException {
+        leftProfile  = new LeftProfile(u) ;
+        rightProfile = new RightProfile();
         navBar = new NavBar();
         userinfo = u;
-        value = new Label(u.toString());
-        primary_layout = new HBox(navBar,value);
-        value.setFont(new Font("arial", 30));
+        primary_layout = new HBox(navBar,leftProfile,rightProfile);
         scene = new Scene(primary_layout,600,600);
         scene.getStylesheets().add(StyleValues.css_uri);
     }

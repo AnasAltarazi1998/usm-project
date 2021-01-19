@@ -28,3 +28,15 @@
     
 }
 .Button .glyph-icon{-fx-fill: #a3a0fb;}
+
+#profileusername{
+    /* -fx-padding: 10,1000,10,1000;     */
+    -fx-border-color:#F1F1F1;
+    -fx-text-fill:#939393;
+    -fx-background-color: #F1F1F1; 
+}
+
+#chatprofile{
+
+
+}
