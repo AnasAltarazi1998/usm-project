@@ -28,3 +28,31 @@
     
 }
 .Button .glyph-icon{-fx-fill: #a3a0fb;}
+
+#profileusername{
+    /* -fx-padding: 10,1000,10,1000;     */
+    -fx-border-color:#F1F1F1;
+    -fx-text-fill:#939393;
+    -fx-background-color: #F1F1F1; 
+}
+
+#primary_layout{
+    -fx-background-image: url("background.png");
+
+}
+
+#textfieldupdate{
+    -fx-font-size: 18;
+    -fx-padding: 1,1,1,1;
+    -fx-border-color:#04000a;
+    -fx-border-width: 0 0 1 0; 
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: rgb(39, 38, 38);
+}
+
+#Updatebutton{
+    -fx-background-color: #836FA9; 
+    -fx-background-radius: 15px; 
+    -fx-text-fill: #ffffff;
+}

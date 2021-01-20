@@ -28,5 +28,22 @@ public class UserRepository {
             return u;
         }
     }
+    public UserModel update(UserModel u)
+    {
+        try {
+            InputStream in = apiClass.post(base_user_url + "/update", u.toString());
+            String result = BaseRepository.convertInputStreamToString(in);
+            Gson g = new Gson();
+            UserModel userModel = g.fromJson(result, UserModel.class);
+            return userModel;
+        } catch (IOException e) {
+
+            e.printStackTrace();
+            UserModel error = new UserModel();
+            error.setId(-1);
+            error.setName(e.getMessage());
+            return error;
+        }     
+    }
     
 }

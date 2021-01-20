@@ -1,3 +1,4 @@
+app\view\components\LeftProfile.class
 app\Models\CommunityModel.class
 app\styles\StyleValues.class
 app\view\pages\signin.class
@@ -12,12 +13,15 @@ app\view\components\LogupForm.class
 app\view\components\Header.class
 app\Controllers\UserController.class
 app\HelloFX.class
+app\view\pages\settings.class
+app\view\components\UpdateForm.class
 app\api\ApiClass.class
 app\view\pages\Profile.class
 app\view\components\LoginForm.class
 app\Models\CommentModel.class
 app\Models\ProfsModel.class
 app\route\Route.class
+app\view\components\RightProfile.class
 app\Models\ScholarshipModel.class
 app\view\components\NavBar.class
 app\view\components\BaseForm.class

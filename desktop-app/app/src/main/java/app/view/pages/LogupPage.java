@@ -1,7 +1,6 @@
 package app.view.pages;
 
 import java.util.Objects;
-import java.io.File;
 import java.io.FileNotFoundException;
 
 import javafx.geometry.Pos;

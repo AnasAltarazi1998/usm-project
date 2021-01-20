@@ -2,8 +2,6 @@ package app.view.components;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
-
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,9 +20,9 @@ public class Header extends HBox{
         USM.setFont(new Font("arial", 32));
         USM.setTextFill(Color.WHITE);
         img = new ImageView(new Image(new FileInputStream("./src/assets/logo.png")));
-        img.setFitWidth(100);
-        img.setFitHeight(100);
-        getChildren().addAll(img, USM);
+        img.setFitWidth(155);
+        img.setFitHeight(155);
+        getChildren().addAll(img);
     }
 
     
