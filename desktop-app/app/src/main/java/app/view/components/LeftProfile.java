@@ -4,20 +4,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Objects;
 import app.Models.UserModel;
-import app.view.pages.Profile;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 
 public class LeftProfile extends VBox {
@@ -29,7 +22,7 @@ public class LeftProfile extends VBox {
         super();
         setSpacing(10);
         setMinSize(834, 542);
-        setBackground(new Background(new BackgroundFill(Color.rgb(179, 157, 216), CornerRadii.EMPTY, Insets.EMPTY)));
+      //  setBackground(new Background(new BackgroundFill(Color.rgb(179, 157, 216), CornerRadii.EMPTY, Insets.EMPTY)));
         
         //username
         userName = new Label(u.getName());

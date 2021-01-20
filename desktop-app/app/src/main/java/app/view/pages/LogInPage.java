@@ -1,6 +1,5 @@
 package app.view.pages;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Objects;
 

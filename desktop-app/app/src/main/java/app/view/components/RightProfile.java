@@ -21,7 +21,7 @@ public class RightProfile extends VBox {
     public RightProfile() throws FileNotFoundException
     {
         super();
-        setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255), CornerRadii.EMPTY, Insets.EMPTY)));
+     //   setBackground(new Background(new BackgroundFill(Color.rgb(255, 255, 255), CornerRadii.EMPTY, Insets.EMPTY)));
         setMinSize(600, 542);
 
         chat = new Button("Chat");

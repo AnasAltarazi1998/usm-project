@@ -197,17 +197,17 @@ public class UserModel {
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", name='" + getName() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", password='" + getPassword() + "'" +
-            ", spec='" + getspec() + "'" +
-            ", university='" + getUniversity() + "'" +
-            ", img='" + getImg() + "'" +
-            ", community_name='" + getCommunity_name() + "'" +
-            ", study_year='" + getStudy_year() + "'" +
-            ", start_year='" + getStart_year() + "'" +
-            ", age='" + getAge() + "'" +
+            " \"id\":" + getId() + "" +
+            ", \"name\":\"" + getName() + "\"" +
+            ", \"email\":\"" + getEmail() + "\"" +
+            ", \"password\":\"" + getPassword() + "\"" +
+            ", \"spec\":\"" + getspec() + "\"" +
+            ", \"university\":\"" + getUniversity() + "\"" +
+            ", \"img\":\"" + getImg() + "\"" +
+            ", \"community_name\":\"" + getCommunity_name() + "\"" +
+            ", \"study_year\":" + getStudy_year() + "" +
+            ", \"start_year\":\"" + getStart_year() + "\"" +
+            ", \"age\":" + getAge() + "" +
             "}";
     }
 

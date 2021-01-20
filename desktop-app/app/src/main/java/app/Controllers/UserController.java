@@ -31,6 +31,12 @@ public class UserController {
         else return true;
         
     } 
+    public boolean checkupdate(UserModel u)
+    {
+        userModel = userRepository.update(u);
+        if(userModel.getId() == -1)return false;
+        else return true;
+    }
     
     
     public UserModel getUserModel() {

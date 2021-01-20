@@ -2,7 +2,6 @@ package app.view.pages;
 
 import java.io.FileNotFoundException;
 import java.util.Objects;
-
 import app.Models.UserModel;
 import app.styles.StyleValues;
 import app.view.components.LeftProfile;
@@ -11,7 +10,6 @@ import app.view.components.RightProfile;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
 
 public class Profile {
     Scene scene;
@@ -23,11 +21,13 @@ public class Profile {
     NavBar navBar;
 
     public Profile(UserModel u) throws FileNotFoundException {
+
         leftProfile  = new LeftProfile(u) ;
         rightProfile = new RightProfile();
         navBar = new NavBar();
         userinfo = u;
         primary_layout = new HBox(navBar,leftProfile,rightProfile);
+        primary_layout.setId("primary_layout");
         scene = new Scene(primary_layout,600,600);
         scene.getStylesheets().add(StyleValues.css_uri);
     }

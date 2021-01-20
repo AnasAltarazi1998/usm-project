@@ -20,9 +20,9 @@ public class Header extends HBox{
         USM.setFont(new Font("arial", 32));
         USM.setTextFill(Color.WHITE);
         img = new ImageView(new Image(new FileInputStream("./src/assets/logo.png")));
-        img.setFitWidth(100);
-        img.setFitHeight(100);
-        getChildren().addAll(img, USM);
+        img.setFitWidth(155);
+        img.setFitHeight(155);
+        getChildren().addAll(img);
     }
 
     
