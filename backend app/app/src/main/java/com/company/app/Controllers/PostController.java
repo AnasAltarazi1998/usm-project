@@ -1,7 +1,9 @@
 package com.company.app.Controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 import com.company.app.Models.PostModel;
 import com.company.app.Repositories.PostRepo;
@@ -12,9 +14,6 @@ import com.company.app.services.FormService;
 import com.company.app.services.PostServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/posts")
 public class PostController {
+   
     @Autowired
     PostRepo postRepo;
     @Autowired
@@ -35,13 +35,23 @@ public class PostController {
     PostServices postServices;
 
     @PostMapping(path = "/add/{u_id}")
-    public boolean addPost(@RequestBody PostEntity p, @PathVariable(name = "u_id") Long id) {
+    public boolean addPost(@RequestBody PostModel p, @PathVariable(name = "u_id") Long id) {
+        PostEntity req = new PostEntity();
         Optional<UserEntity> userEntity;
         if ((userEntity = userRepo.findById(id)).isPresent()) {
             UserEntity u = userEntity.get();
-            p.setUEntity(u);
-            p = postRepo.save(p);
-            return postRepo.findById(p.getId()).isPresent();
+            req.setTitle(p.getTitle());
+            req.value(p.getValue());
+
+            if(p.getAttach() != null) 
+                req.setAttach(p.getAttach());
+            else
+                req.setAttach("https://th.bing.com/th/id/OIP.wwFDVQdzDng7C7kB6f4I7gHaE7?pid=Api&rs=1");
+
+            req.setUEntity(u);
+            req.setPcommuninty(u.getCommuninty());
+            req = postRepo.save(req);
+            return postRepo.findById(req.getId()).isPresent();
 
         } else
             return false;
@@ -65,14 +75,34 @@ public class PostController {
         return formService.convertToListOfPostResponseFromPostEntitiesForm(postlist);
     }
 
-    @GetMapping(path = "/getallposts")
-    public Page<PostModel> getAllPosts() {
-        Pageable pageable = new Pageable();
-        List<PostEntity> allPost = postRepo.findAll();
-        List<PostModel> allPostModels = formService.convertToListOfPostResponseFromPostEntitiesForm(allPost);
-        Page<PostModel> allPostsPage = new PageImpl<>(allPostModels);
-        return allPostsPage;
+    @GetMapping(path = "/getallposts/{u_id}")
+    public Iterable<PostModel> getAllPosts(@PathVariable(name = "u_id") long uid) {
+       List<PostModel> res = new ArrayList<PostModel>();
+       Iterable<PostEntity> db_values = postRepo.findAll();
+        if(db_values.iterator().hasNext())
+        {
+         
+            db_values.forEach(new Consumer<PostEntity>(){
 
+                @Override
+                public void accept(PostEntity t) {
+                    if(t.getPcommuninty().getName().equals(userRepo.findById(uid).get().getCommuninty().getName()))
+                        res.add(formService.convertToPostResponseFromPostEntitiesForm(t));
+                }
+
+                
+            });
+            return res;
+
+        }else{
+            res.add(
+                new PostModel()
+                .id(-1)
+                .Title("404 - no posts yet")
+                .attach("https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png")
+                .UserImage(userRepo.findById(uid).get().getImg()));
+            return res;
+        }
     }
 
     @PostMapping(value = "/editpost")
