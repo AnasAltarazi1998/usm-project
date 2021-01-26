@@ -72,7 +72,7 @@ public class UserController {
             return u;
         } else {
             responseEntity = service.convertToUserEntityFromUserModelForm(u);
-            responseEntity.setImg("https://eu.ui-avatars.com/api/?name="+u.getName());
+            responseEntity.setImg("https://eu.ui-avatars.com/api/?name="+(u.getName().replace(" ", "+")));
             responseEntity = userRepo.save(responseEntity);
             return u = service.convertToUserResponseForm(responseEntity);
         }
